@@ -114,11 +114,10 @@ router.get('/user/:userId', ensureAuth, async (req, res) => {
   try {
     const stories = await Story.find({
       user: req.params.userId,
-      satus: 'public',
+      status: 'public',
     })
       .populate('user')
       .lean();
-    console.log(stories);
 
     res.render('stories/index', { stories });
   } catch (error) {
